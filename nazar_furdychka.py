@@ -18,21 +18,19 @@ def callback_worker(call):
 @bot.message_handler(commands=['start'])
 def start_message(message):
     keyboard = telebot.types.InlineKeyboardMarkup()
-    key_yes = telebot.types.InlineKeyboardButton(text='BEST LVIV TOP', callback_data='inline_text')
-    keyboard.add(key_yes);
-    userName = message.from_user.username
-    now = datetime.datetime.now()
-    date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
-    msg = "Привіт " + userName + " ! Це повідомлення було відправлено о " + date_time
+    key1 = telebot.types.InlineKeyboardButton(text='BEST LVIV TOP', callback_data='inline_text')
+    keyboard.add(key1)
+    date_time = datetime.datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
+    msg = "Привіт " + message.from_user.username + " ! Це повідомлення було відправлено о " + date_time
     bot.send_message(message.chat.id, text=msg, reply_markup = keyboard)
 
 
 @bot.message_handler(commands=['location'])
 def location_message(message):
     keyboard = telebot.types.ReplyKeyboardMarkup()
-    itembtn1 = telebot.types.KeyboardButton('Share contact', request_contact=True)
-    itembtn2 = telebot.types.KeyboardButton('Share location', request_location=True)
-    keyboard.add(itembtn1,itembtn2)
+    button1 = telebot.types.KeyboardButton('Share contact', request_contact=True)
+    button2 = telebot.types.KeyboardButton('Share location', request_location=True)
+    keyboard.add(button1,button2)
     bot.send_message(message.chat.id, text='Choose option to share', reply_markup=keyboard)
 
 
